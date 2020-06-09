@@ -61,11 +61,19 @@ public class Board {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+	
+	public void setUpdatedate(Timestamp updatedate) {
+		this.updatedate = updatedate;
+	}
+	
 	public Timestamp getUpdatedate() {
 		return updatedate;
 	}
-	public void setUpdatedate(Timestamp updatedate) {
-		this.updatedate = updatedate;
+	
+	@Override
+	public String toString() {
+		return "Board [bno=" + bno + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regdate="
+				+ regdate + ", updatedate=" + updatedate + "]";
 	}
 	
 	
