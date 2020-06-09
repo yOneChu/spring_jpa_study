@@ -47,11 +47,10 @@ public class BoardRepositoryTests {
 		boardRepo.save(board);
 	}
 	
-	@Test
+	//@Test
 	public void testRead() {
 		//Optional<Board> boardOptional = boardRepo.findById(1L);
 		//Board board = boardOptional.get();
-		
 		
 		Board board = boardRepo.findById(1L).get();
 		
@@ -60,6 +59,26 @@ public class BoardRepositoryTests {
 		System.out.println(board.getTitle());
 		System.out.println(board.getWriter());
 		
+	}
+	
+	//@Test
+	public void testUpdate() {
+		
+		System.out.println("Read First -----------");
+		Board board = boardRepo.findById(1L).get();
+		
+		System.out.println("Update Title =----------");
+		board.setTitle("update 1 title");
+		
+		System.out.println("Call Save() ----------- ");
+		boardRepo.save(board);
+		
+	}
+	
+	@Test
+	public void testDelete() {
+		System.out.println("DELETE Entity ====== ");
+		boardRepo.deleteById(1L);
 	}
 	
 	
