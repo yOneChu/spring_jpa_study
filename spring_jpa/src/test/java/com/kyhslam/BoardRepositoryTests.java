@@ -75,7 +75,7 @@ public class BoardRepositoryTests {
 		
 	}
 	
-	@Test
+	//@Test
 	public void testDelete() {
 		System.out.println("DELETE Entity ====== ");
 		boardRepo.deleteById(1L);

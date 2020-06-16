@@ -7,6 +7,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kyhslam.domain.Board;
@@ -70,11 +74,51 @@ public class boot3ApplicationTest {
 		results.forEach(board -> System.out.println(board.toString()));
 	}
 	
-	@Test
+	//@Test
 	public void testBnoOrderBy() {
 		Collection<Board> results = repo.findByBnoGreaterThanOrderByBnoDesc(90L);
 		
 		results.forEach(board -> System.out.println(board.toString()));
 	}
 	
+	//@Test
+	public void testBnoOrderByPaging() {
+		
+		Pageable paging = PageRequest.of(0,10);
+		Collection<Board> results =	repo.findByBnoGreaterThanOrderByBnoDesc(0L, paging);
+		results.forEach(board -> System.out.println(board.getBno()));
+	}
+
+	//@Test
+	public void testBnoPagingSort() {
+		Pageable paging = PageRequest.of(0, 10, Sort.Direction.ASC, "bno");
+		
+		Page<Board> result = repo.findByBnoGreaterThan(0L, paging);
+		
+		System.out.println("PAGE SIZE : " + result.getSize());
+		System.out.println("TOTAL PAGES : " + result.getTotalPages());
+		System.out.println("TOTAL COUNT : " + result.getTotalElements());
+		System.out.println("NEXT : " + result.nextPageable());
+		
+		List<Board> list = result.getContent();
+		
+		list.forEach(board -> System.out.println(board.toString()));
+		
+		
+		//Collection<Board> results = repo.findByBnoGreaterThan(0L, paging);
+		//results.forEach(board -> System.out.println(board.toString()));
+	}
+	
+	
+	//@Test
+	public void testQuery() {
+		
+		repo.findTitle("17").forEach(board -> System.out.println(board.toString()));
+		
+	}
+	
+	@Test
+	public void testContentQuery() {
+		repo.findByContent("17").forEach(board -> System.out.println(board.toString()));
+	}
 }
