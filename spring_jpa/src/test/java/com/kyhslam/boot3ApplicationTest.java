@@ -1,5 +1,6 @@
 package com.kyhslam;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -117,8 +118,14 @@ public class boot3ApplicationTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void testContentQuery() {
 		repo.findByContent("17").forEach(board -> System.out.println(board.toString()));
+	}
+	
+	@Test
+	public void testByTitle17() {
+		repo.findByTitle2("17")
+		.forEach(arr -> System.out.println(Arrays.toString(arr)));
 	}
 }

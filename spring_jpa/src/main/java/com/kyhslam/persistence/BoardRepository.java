@@ -45,4 +45,11 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 	@Query("SELECT b from Board b WHERE b.content LIKE %:content% AND b.bno > 0 ORDER BY b.bno DESC ")
 	public List<Board> findByContent(@Param("content") String content);
 	
+	/*@Query("SELECT b FROM #{entityName} b WHERE b.writer = LIKE %?1% AND b.bno > 0 ORDER BY b.bno DESC")
+	public List<Board> findByWriter(String writer);*/
+	
+	@Query("SELECT b.bno, b.title, b.writer, b.regdate "
+				+	" FROM Board b WHERE b.title LIKE %?1% AND b.bno > 0 ORDER BY b.bno DESC")
+	public List<Object[]> findByTitle2(String title);
+	
 }
