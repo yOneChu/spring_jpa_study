@@ -66,7 +66,9 @@ public class SubjectController {
 		sub.setAccountName(subject.getAccountName());
 		sub.setAccountCode(subject.getAccountCode());
 		
+		subjectRepository.save(sub);
 		
+		message.setSubject(sub);
 		
 		return message;
 	}

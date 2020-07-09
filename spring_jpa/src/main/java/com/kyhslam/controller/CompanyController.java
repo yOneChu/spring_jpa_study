@@ -47,7 +47,7 @@ public class CompanyController {
 	}
 	
 	
-	// 회사 조회
+	// 회사 조회 (계정과목 포함)
 	@GetMapping("/{bno}/list2")
 	public ResponseAccounMessage list2(@PathVariable("bno") Long bno){
 		
@@ -85,7 +85,7 @@ public class CompanyController {
 		//객체 리프레시해줘야됨
 		message.setCompany(company);
 		return message;
-	}
+	}	
 	
 	//회사 추가
 	@PostMapping("/add")
@@ -101,6 +101,7 @@ public class CompanyController {
 	}
 	
 	
+	//삭제
 	@DeleteMapping("/{bno}/delete")
 	public void delete(@PathVariable("bno") Long bno) {
 		

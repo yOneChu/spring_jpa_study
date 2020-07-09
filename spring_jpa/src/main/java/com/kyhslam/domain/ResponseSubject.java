@@ -1,6 +1,5 @@
 package com.kyhslam.domain;
 
-import javax.security.auth.Subject;
 
 import org.springframework.http.HttpStatus;
 
@@ -10,7 +9,7 @@ public class ResponseSubject {
 	private boolean status;
 	private String message;
 	
-	private Subject subject;
+	private RelatedSubject subject;
 	
 	
 	public ResponseSubject(HttpStatus httpstatus) {
@@ -43,11 +42,12 @@ public class ResponseSubject {
 		this.message = message;
 	}
 
-	public Subject getSubject() {
+	public RelatedSubject getSubject() {
 		return subject;
 	}
 
-	public void setSubject(Subject subject) {
+	public void setSubject(RelatedSubject subject) {
 		this.subject = subject;
 	}
+
 }
