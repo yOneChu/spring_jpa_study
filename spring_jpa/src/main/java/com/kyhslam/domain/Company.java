@@ -31,6 +31,8 @@ public class Company {
 
     @UpdateTimestamp
     private Timestamp updateDate; // 수정일
+    
+    private Timestamp deletedate; // 삭제일
 
     private Integer user_all; //사용자 총 계정수
     
@@ -59,8 +61,18 @@ public class Company {
 	}
 	 */
     
+    
+    
 	public Integer getUser_all() {
 		return user_all;
+	}
+
+	public Timestamp getDeletedate() {
+		return deletedate;
+	}
+
+	public void setDeletedate(Timestamp deletedate) {
+		this.deletedate = deletedate;
 	}
 
 	public void setUser_all(Integer user_all) {

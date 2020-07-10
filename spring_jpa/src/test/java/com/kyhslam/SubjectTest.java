@@ -1,5 +1,9 @@
 package com.kyhslam;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +51,22 @@ public class SubjectTest {
 		subRepo.save(subject);
 	}
 
-	
-	//
 	@Test
+	public void updateAccount() {
+		
+		
+		Company com = comRepo.findById(1L).get();
+		
+		
+		Timestamp tt = new Timestamp(System.currentTimeMillis());
+		com.setDeletedate(tt);
+		
+		comRepo.save(com);
+				
+		
+	}
+	
+	//@Test
 	public void selectComapny() {
 		
 		Company com = comRepo.findById(1L).get();

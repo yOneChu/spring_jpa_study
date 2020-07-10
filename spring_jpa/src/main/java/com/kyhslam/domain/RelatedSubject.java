@@ -47,8 +47,16 @@ public class RelatedSubject {
     @UpdateTimestamp
     private Timestamp updatedate; // 수정일
 
+    private Timestamp deletedate; // 삭제일
     
-    
+	public Timestamp getDeletedate() {
+		return deletedate;
+	}
+
+	public void setDeletedate(Timestamp deletedate) {
+		this.deletedate = deletedate;
+	}
+
 	public Long getBno() {
 		return bno;
 	}
