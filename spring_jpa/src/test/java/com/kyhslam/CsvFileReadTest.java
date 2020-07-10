@@ -71,7 +71,13 @@ public class CsvFileReadTest {
 						System.out.println(" -------------------------- ");
 						
 						c.setName(nextLine[4]);
-						c.setUser_all( Integer.parseInt(nextLine[5]) );
+						/*
+						 * c.setUser_all( Integer.parseInt(nextLine[5]) ); c.setDeleted_user(
+						 * Integer.parseInt(nextLine[6])); c.setUse_count(
+						 * Integer.parseInt(nextLine[7]));
+						 */
+						
+						c.setUser_all( (Integer)nextLine[5] );
 						c.setDeleted_user( Integer.parseInt(nextLine[6]));
 						c.setUse_count( Integer.parseInt(nextLine[7]));
 						
