@@ -24,21 +24,21 @@ public class RelatedSubject {
 
     private String accountName; // 계정체계
 
-    private String accountCode; // 계정코드
+    private Integer accountCode; // 계정코드
     
     private String subjectName; // 과목명(세목)
     
-    private String subject_; // 과목명(목)
+    private String subject; // 과목명(목)
     
     private String type; // 분류
     
-    private String relatedCode; // 관계코드
+    private Integer relatedCode; // 관계코드
     
     private String relatedName; // 관계계정과목
     
-    //불필요하게 양쪽 테이블을 조회하지 않도록 양쪽 모두 '지연로딩' 방식으로 설정
+    //불필요하게 양쪽 테이블을 조회하지 않도록 양쪽 모두 '지연로딩' 방식으로 설정 (fetch = FetchType.LAZY)
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Company company; // 회사코드
 
     @CreationTimestamp
@@ -72,12 +72,12 @@ public class RelatedSubject {
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
 	}
-
-	public String getAccountCode() {
+	
+	public Integer getAccountCode() {
 		return accountCode;
 	}
 
-	public void setAccountCode(String accountCode) {
+	public void setAccountCode(Integer accountCode) {
 		this.accountCode = accountCode;
 	}
 
@@ -113,12 +113,12 @@ public class RelatedSubject {
 		this.subjectName = subjectName;
 	}
 
-	public String getSubject_() {
-		return subject_;
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setSubject_(String subject_) {
-		this.subject_ = subject_;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public String getType() {
@@ -129,11 +129,12 @@ public class RelatedSubject {
 		this.type = type;
 	}
 
-	public String getRelatedCode() {
+
+	public Integer getRelatedCode() {
 		return relatedCode;
 	}
 
-	public void setRelatedCode(String relatedCode) {
+	public void setRelatedCode(Integer relatedCode) {
 		this.relatedCode = relatedCode;
 	}
 

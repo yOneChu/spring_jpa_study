@@ -39,9 +39,9 @@ public class CompanyController {
 	@GetMapping("/{bno}/list")
 	public ResponseEntity<List<RelatedSubject>> list(@PathVariable("bno") Long bno){
 		
-		Company company = new Company();
-		company.setBno(bno);
-		
+		//Company company = new Company();
+		//company.setBno(bno);
+		Company company = companyRepository.findById(bno).get();
 		
 		return new ResponseEntity<>(getListByCompany(company), HttpStatus.ACCEPTED);
 	}
@@ -51,9 +51,7 @@ public class CompanyController {
 	@GetMapping("/{bno}/list2")
 	public ResponseAccounMessage list2(@PathVariable("bno") Long bno){
 		
-		Company company = new Company();
-		company.setBno(bno);
-		
+		Company company = companyRepository.findById(bno).get();
 		company.setSubjectList(subRepo.getSubjectOfCompany(company));
 		
 		HashMap<String, Object> map = new HashMap<>();

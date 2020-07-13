@@ -43,7 +43,7 @@ public class SubjectTest {
 		company.setBno(1L);
 		  
 		RelatedSubject subject = new RelatedSubject(); 
-		subject.setAccountCode("400");
+		subject.setAccountCode(400);
 		subject.setAccountName("test4"); 
 		subject.setCompany(company);
 		
@@ -51,7 +51,7 @@ public class SubjectTest {
 		subRepo.save(subject);
 	}
 
-	@Test
+	//@Test
 	public void updateAccount() {
 		
 		
@@ -77,6 +77,16 @@ public class SubjectTest {
 		com.setSubjectList(subRepo.getSubjectOfCompany(com));
 		
 		System.out.println(com.getSubjectList());
+	}
+
+	@Test
+	public void selectCodeNext() {
+		
+		Integer code = subRepo.getAccountNextValCode();
+		System.out.println(code);
+		
+		
+		
 		
 	}
 	

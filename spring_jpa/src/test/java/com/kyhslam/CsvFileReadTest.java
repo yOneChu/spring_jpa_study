@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,10 +23,10 @@ import com.opencsv.CSVReader;
 public class CsvFileReadTest {
 
 	@Autowired
-	SubjectRepository subrepo;
+	SubjectRepository subRepo;
 	
 	@Autowired
-	CompanyRepository comrepo;
+	CompanyRepository comRepo;
 	
 	
 	@Test
@@ -34,6 +35,8 @@ public class CsvFileReadTest {
 		String isDir = "C:\\csvFile";
 		//String csvFile = "C:\\csvFile\\company.csv";
 
+		ArrayList<String[]> list = new ArrayList<>();
+		
 		try {
 
 			String line = "";
@@ -70,28 +73,51 @@ public class CsvFileReadTest {
 
 						System.out.println(" -------------------------- ");
 						
-						c.setName(nextLine[4]);
-						/*
-						 * c.setUser_all( Integer.parseInt(nextLine[5]) ); c.setDeleted_user(
-						 * Integer.parseInt(nextLine[6])); c.setUse_count(
-						 * Integer.parseInt(nextLine[7]));
-						 */
-						
-						c.setUser_all( (Integer)nextLine[5] );
-						c.setDeleted_user( Integer.parseInt(nextLine[6]));
-						c.setUse_count( Integer.parseInt(nextLine[7]));
-						
-						
-						c.setServiceFlag(nextLine[8]);
-						c.setConnectedFlag(nextLine[9]);
-						c.setConnectedSystem(nextLine[10]);
-						
-						comrepo.save(c);
+						String[] data = new String[nextLine.length];
+                        data[4] = nextLine[4];
+                        data[5] = nextLine[5];
+                        data[6] = nextLine[6];
+                        data[7] = nextLine[7];
+                        data[8] = nextLine[8];
+                        data[9] = nextLine[9];
+                        data[10] = nextLine[10];
+                        data[11] = nextLine[11];
+                        
+                        list.add(data);
 					}
+					
+					
+					
 				}
-
+				System.out.println(list.size());
 				System.out.println("===========================================================================");
-			}
+			} // end for
+			
+			
+			for(int i=1; i < list.size(); i++){
+
+                String[] a = list.get(i);
+
+                Company company = new Company();
+
+                for(int j=4; j < a.length; j++){
+                    System.out.println(a[j]);
+
+                    company.setName( a[4] == null ? "" : a[4] );
+                    company.setUser_all( Integer.parseInt(a[5]) );
+                    company.setDeleted_user( Integer.parseInt(a[6]) );
+                    company.setUse_count( Integer.parseInt(a[7]) );
+
+                    company.setServiceFlag( a[8] == null ? "" : a[8] );
+                    company.setConnectedFlag( a[9] == null ? "" : a[9] );
+                    company.setConnectedSystem( a[10] == null ? "" : a[10] );
+
+                }
+
+                comRepo.save(company);
+                System.out.println("===================");
+            }
+			
 			
 			
 			/*
